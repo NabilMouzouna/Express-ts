@@ -1,8 +1,8 @@
 import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
+import {  config  } from 'dotenv';
 const app: Express = express();
-const port = process.env.PORT || 8001;
-dotenv.config()
+config()
+const PORT = process.env.PORT || 8001;
 
 app.get('/', (req: Request, res: Response) => {
   res.send(
@@ -23,7 +23,7 @@ app.get('/', (req: Request, res: Response) => {
   );
 });
 
-app.listen(port, () => {
-    const message = `\n-->\x1b[33m Server is Running at\x1b[0m \x1b[34mhttp://localhost:${port}\x1b[0m\n`
-  console.log(message);
+app.listen(PORT, () => {
+    const message = [`\n\t✅\u001b[1m Server is Running at\u001b[0m`,`\x1b[34mhttp://localhost:${PORT}\x1b[0m\n`];
+  console.log(...message);
 });
